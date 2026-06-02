@@ -1,409 +1,457 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>zfelino.com</title>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
-<style>
-*{ margin:0; padding:0; box-sizing:border-box; }
-:root{ --orange:#E84E0F; --dark:#1a1008; --text:#f0ebe4; --muted:rgba(240,235,228,.65); }
-html{ scroll-behavior:smooth; }
-body{ background:var(--dark); color:var(--text); font-family:'DM Sans',sans-serif; overflow-x:hidden; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zfelino.com</title>
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
 
-nav{
-    position:fixed; top:0; left:0; right:0; z-index:1000;
-    height:52px; display:flex; justify-content:space-between; align-items:center;
-    padding:0 2rem;
-    background:rgba(20,10,4,.72); backdrop-filter:blur(12px);
-    border-bottom:1px solid rgba(255,255,255,.06);
-}
-.nav-brand img{ height:20px; width:auto; display:block; }
-.nav-links{ list-style:none; display:flex; align-items:center; gap:2rem; }
-.nav-links a{ text-decoration:none; color:var(--muted); font-size:.78rem; transition:.25s; }
-.nav-links a:hover{ color:var(--text); }
-.nav-menu-icon{ display:flex; flex-direction:column; gap:4px; cursor:pointer; }
-.nav-menu-icon span{ width:20px; height:2px; background:var(--muted); }
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        :root { 
+            --orange:#E84E0F; 
+            --dark:#1a1008; 
+            --text:#f0ebe4; 
+            --muted:rgba(240,235,228,.65); 
+        }
+        html { scroll-behavior:smooth; }
+        body { 
+            background: var(--dark); 
+            color: var(--text); 
+            font-family: 'DM Sans', sans-serif; 
+            overflow-x: hidden; 
+        }
 
-.hero{ min-height:100vh; padding-top:52px; position:relative; overflow:hidden; }
-.hero-bg{
-    position:absolute; inset:0;
-    background: linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)), url("background.png");
-    background-size:cover; background-position:center; background-repeat:no-repeat;
-}
-.hero-inner{
-    position:relative; z-index:2;
-    min-height:calc(100vh - 52px);
-    display:grid; grid-template-columns:1fr 1fr;
-    align-items:center;
-    padding:4rem 3.5rem;
-}
+        nav {
+            position: fixed; top:0; left:0; right:0; z-index:1000;
+            height: 52px; display: flex; justify-content: space-between; align-items: center;
+            padding: 0 2rem;
+            background: rgba(20,10,4,.72); backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,.06);
+        }
+        .nav-links { list-style: none; display: flex; align-items: center; gap: 2rem; }
+        .nav-links a { text-decoration: none; color: var(--muted); font-size: .78rem; }
+        .nav-brand img { height: 20px; width: auto; display: block; }
+
+        .home { 
+            height: 100vh; 
+            width: 100vw;
+            position: relative; 
+            overflow: hidden;
+        }
+
+        .home-bg-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; 
+            background-image: url('background.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .asterisk {
+            position: absolute;
+            top: 100px;         
+            left: 350px;        
+        }
+        .asterisk img { animation: spin-home 15s linear infinite; width: 200px; }
+        @keyframes spin-home {
+            from { transform: rotate(0deg); }
+            to   { transform: rotate(360deg); }
+        }
+
+        .hello-text {
+            font-family: 'Unbounded', sans-serif;
+            font-weight: 900;
+            font-size: 6rem;
+            line-height: 1;
+            position: absolute;
+            top: 500px;         
+            left: 220px;        
+        }
 
 
-.hero-left{
-    position:relative;
-    align-self:stretch;
-    display:flex;
-    flex-direction:column;
-    justify-content:flex-end;
-}
+        .photo-slot {
+            position: absolute;
+            top: 180px;         
+            left: 550px;        
+            width: 320px;   
+            height: 440px;  
+            overflow: hidden;
+        }
+        .photo-slot img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
 
-.asterisk{ position:absolute; top:80px; left:300px; }
-.asterisk img{ width:200px; }
+        .intro-block {
+            position: absolute;
+            top: 250px;         
+            left: 900px;        
+        }
+        .headline { font-family:'Unbounded',sans-serif; font-size: 3.5rem; font-weight:900; margin-bottom: 1rem; }
+        .subhead { font-size: 1.25rem; line-height: 1.5; margin-bottom: 0.5rem; }
+        .tagline { color: var(--muted); font-style: italic; line-height: 1.6; font-size: 1.05rem; }
 
-.asterisk img {
-  animation: spin 15s linear infinite;
-}
 
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
+        .about { 
+            min-height: 100vh; 
+            background: #120b05; 
+            padding: 160px 10%; 
+            display: flex;             
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8%;                  
+            position: relative; 
+        }
 
-.hello-text{
-    
-    font-family:'Unbounded',sans-serif;
-    font-weight:900;
-    font-size:clamp(3.5rem,7vw,5.5rem);
-    line-height:.9;
-    padding-right:0;
-    margin-left:calc(50% - 280px - -5rem);
-}
+        .about-left {
+            flex: 1;
+        }
 
-.photo-slot{
-    position:absolute;
-    bottom:0;
-    right:-2rem;
-    width:280px;
-    height:380px;
-    overflow:hidden;
-}
-.photo-slot img{ width:100%; height:100%; object-fit:cover; object-position:center top; }
+        .about-title { 
+            font-family: 'Unbounded', sans-serif; 
+            font-weight: 900; 
+            font-size: 5rem;         
+            line-height: 1.05;
+            color: white;      
+            position: sticky;          
+            top: 120px;
+        }
 
-.hero-right{ display:flex; flex-direction:column; gap:1rem; padding-left:2.5rem; }
-.headline{ font-family:'Unbounded',sans-serif; font-size:clamp(2rem,5vw,3.8rem); font-weight:900; line-height:1; }
-.subhead{ font-size:1.15rem; line-height:1.5; }
-.tagline{ color:var(--muted); font-style:italic; line-height:1.6; }
-.cta-arrow{ display:flex; align-items:center; gap:.6rem; width:fit-content; margin-top:1rem; text-decoration:none; }
-.cta-line{ width:60px; height:2px; background:var(--text); }
-.cta-arrowhead{ width:0; height:0; border-top:5px solid transparent; border-bottom:5px solid transparent; border-left:8px solid var(--text); }
+        .about-right { 
+            flex: 1.8;                 
+            display: flex; 
+            flex-direction: column; 
+            gap: 36px;                 
+        }
 
-.about{ min-height:100vh; background:#120b05; padding:120px 10%; }
-.about-container{ max-width:900px; margin:0 auto; }
-.about-title{ font-family:'Unbounded',sans-serif; font-size:clamp(2rem,5vw,3.5rem); margin-bottom:50px; }
-.about-content{ display:flex; flex-direction:column; gap:24px; }
-.about-content p{ color:var(--muted); font-size:1.05rem; line-height:1.9; max-width:750px; }
+        .about-right p { 
+            color: var(--muted); 
+            font-size: 1.4rem;       
+            line-height: 1.4;          
+        }
 
-.hero-divider{
-    position:absolute; bottom:0; left:0; right:0; height:1px;
-    background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),rgba(255,255,255,.15),transparent);
-}
+        .about-star { 
+            position: absolute;
+            bottom: 60px;
+            left: 10%;
+            animation: spin-about 15s linear infinite; 
+        }
+        
+        @keyframes spin-about {
+            from { transform: rotate(0deg); }
+            to   { transform: rotate(360deg); }
+        }
 
-.skills{ background:#0e0805; padding:100px 3.5rem 120px; position:relative; overflow:hidden; }
-.skills-deco{ position:absolute; top:-20px; right:-10px; font-size:9rem; font-family:'Unbounded',sans-serif; font-weight:900; color:var(--orange); line-height:1; user-select:none; pointer-events:none; }
-.skills-deco img{ width:120px; }
-.skills-heading{ font-family:'Unbounded',sans-serif; font-size:clamp(2rem,6vw,4rem); font-weight:900; line-height:1.05; max-width:700px; margin-bottom:72px; }
-.skill-row{ display:grid; grid-template-columns:90px 200px 1fr; align-items:center; gap:0 2rem; padding:28px 0; border-top:1px solid rgba(255,255,255,.08); position:relative; }
-.skill-row:last-child{ border-bottom:1px solid rgba(255,255,255,.08); }
-.skill-row.even{ grid-template-columns:1fr 200px 90px; }
-.skill-number{ font-family:'Unbounded',sans-serif; font-size:clamp(2.2rem,5vw,3.5rem); font-weight:900; color:var(--text); line-height:1; }
-.skill-row.even .skill-number{ order:3; text-align:right; }
-.skill-image{ width:200px; height:110px; overflow:hidden; background:rgba(255,255,255,.05); border:1px dashed rgba(255,255,255,.12); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-.skill-image img{ width:100%; height:100%; object-fit:cover; display:block; }
-.skill-image-label{ font-size:.68rem; color:var(--muted); letter-spacing:.08em; text-transform:uppercase; }
-.skill-row.even .skill-image{ order:2; }
-.skill-text{ display:flex; flex-direction:column; gap:.45rem; }
-.skill-row.even .skill-text{ order:1; }
-.skill-name{ font-family:'Unbounded',sans-serif; font-size:clamp(.95rem,2vw,1.3rem); font-weight:700; line-height:1.1; }
-.skill-desc{ color:var(--muted); font-size:.85rem; line-height:1.65; max-width:360px; }
+        .about-star img {
+            width: 140px;            
+            display: block;
+        }
 
-@keyframes fadeUp{ from{ opacity:0; transform:translateY(25px); } to{ opacity:1; transform:translateY(0); } }
-.hero-left,.headline,.subhead,.tagline,.cta-arrow{ animation:fadeUp .8s ease both; }
-.skill-row{ opacity:0; transform:translateY(30px); transition:opacity .6s ease, transform .6s ease; }
-.skill-row.visible{ opacity:1; transform:translateY(0); }
+   
+        .skills {
+            min-height: 100vh;
+            background: #120b05;       
+            padding: 120px 10%;
+            display: flex;
+            flex-direction: column;   
+            align-items: center;       
+            justify-content: center;   
+            gap: 40px;                 
+            width: 100%;               
+            overflow: hidden;
+        }
 
-.gallery{ background:#111009; padding:100px 3rem 120px; position:relative; overflow:hidden; min-height:100vh; display:flex; flex-direction:column; justify-content:center; }
-.gallery-deco-tl{ position:absolute; top:-10px; left:-10px; font-size:9rem; color:var(--orange); font-family:'Unbounded',sans-serif; font-weight:900; line-height:1; user-select:none; pointer-events:none; }
-.gallery-deco-tl img,.gallery-deco-br img{ width:110px; }
-.gallery-deco-br{ position:absolute; bottom:60px; right:-10px; font-size:9rem; color:var(--orange); font-family:'Unbounded',sans-serif; font-weight:900; line-height:1; user-select:none; pointer-events:none; }
-.gallery-heading{ position:relative; z-index:2; pointer-events:none; }
-.gallery-grid{ position:relative; z-index:2; display:grid; grid-template-columns:1fr 200px 200px 1fr; grid-template-rows:auto auto; gap:0; align-items:center; max-width:1000px; margin:0 auto; }
-.gw-these{ grid-column:1; grid-row:1; font-family:'Unbounded',sans-serif; font-size:clamp(2.5rem,7vw,5rem); font-weight:900; line-height:1; display:flex; flex-direction:column; gap:.3rem; }
-.gw-these .arrow-row{ display:flex; align-items:center; gap:.5rem; font-size:.9rem; }
-.gw-arrow-h{ display:flex; align-items:center; gap:.2rem; }
-.gw-line-h{ width:36px; height:2px; background:var(--text); }
-.gw-arrowhead-r{ width:0; height:0; border-top:5px solid transparent; border-bottom:5px solid transparent; border-left:7px solid var(--text); }
-.gw-img1{ grid-column:2; grid-row:1; }
-.gw-aremy{ grid-column:3; grid-row:1; font-family:'Unbounded',sans-serif; font-size:clamp(2rem,5vw,3.8rem); font-weight:900; line-height:1.05; display:flex; flex-direction:column; align-items:flex-start; gap:.1rem; padding:0 1rem; }
-.gw-bracket{ color:var(--text); }
-.gw-arrow-down{ display:flex; flex-direction:column; align-items:center; gap:.15rem; margin-top:.3rem; }
-.gw-line-v{ width:2px; height:28px; background:var(--text); }
-.gw-arrowhead-d{ width:0; height:0; border-left:5px solid transparent; border-right:5px solid transparent; border-top:7px solid var(--text); }
-.gw-img2{ grid-column:4; grid-row:1; display:flex; justify-content:flex-end; }
-.gw-img3{ grid-column:1 / 3; grid-row:2; margin-top:1.5rem; }
-.gw-img3 .gallery-item{ width:100%; }
-.gw-works{ grid-column:3 / 5; grid-row:2; display:flex; flex-direction:column; align-items:flex-start; justify-content:center; padding-left:2rem; margin-top:1.5rem; gap:1.5rem; }
-.gw-works-word{ font-family:'Unbounded',sans-serif; font-size:clamp(3rem,8vw,6rem); font-weight:900; line-height:1; }
-.gallery-btn{ display:inline-block; background:var(--orange); color:var(--text); font-family:'Unbounded',sans-serif; font-size:.72rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; text-decoration:none; padding:.85rem 2.2rem; border-radius:2px; transition:opacity .2s; }
-.gallery-btn:hover{ opacity:.85; }
-.gallery-item{ width:200px; height:130px; overflow:hidden; background:rgba(255,255,255,.06); border:1px dashed rgba(255,255,255,.12); display:flex; align-items:center; justify-content:center; flex-shrink:0; position:relative; }
-.gallery-item img{ width:100%; height:100%; object-fit:cover; display:block; }
-.gallery-item-label{ font-size:.68rem; color:var(--muted); letter-spacing:.08em; text-transform:uppercase; }
-.gallery-grid{ opacity:0; transform:translateY(30px); transition:opacity .7s ease, transform .7s ease; }
-.gallery-grid.visible{ opacity:1; transform:translateY(0); }
+        .skills-cards-row {
+            display: flex;
+            flex-direction: row;      
+            justify-content: center;
+            align-items: center;
+            gap: 32px;                 
+            width: 100%;
+        }
 
-.contact{ background:#0d0804; padding:80px 3.5rem 0; position:relative; overflow:hidden; }
-.contact-deco{ position:absolute; top:-30px; right:-20px; pointer-events:none; user-select:none; }
-.contact-deco img{ width:160px; }
-.contact-heading-row{ display:flex; align-items:center; gap:1rem; margin-bottom:48px; }
-.contact-title{ font-family:'Unbounded',sans-serif; font-size:clamp(2.2rem,6vw,4rem); font-weight:900; line-height:1; }
-.contact-star{ color:var(--orange); font-family:'Unbounded',sans-serif; font-size:clamp(2rem,5vw,3.5rem); font-weight:900; line-height:1; }
-.contact-body{ display:grid; grid-template-columns:1fr 260px; gap:3rem; align-items:start; }
-.contact-form{ display:flex; flex-direction:column; gap:0; }
-.contact-field{ display:flex; flex-direction:column; gap:4px; border-bottom:1px solid rgba(255,255,255,.18); padding:14px 0; }
-.contact-field label{ font-size:.78rem; color:var(--muted); font-family:'DM Sans',sans-serif; }
-.contact-field input,.contact-field textarea{ background:transparent; border:none; outline:none; color:var(--text); font-family:'DM Sans',sans-serif; font-size:.95rem; resize:none; width:100%; caret-color:var(--orange); }
-.contact-field textarea{ min-height:60px; }
-.contact-field input::placeholder,.contact-field textarea::placeholder{ color:transparent; }
-.contact-submit-row{ display:flex; align-items:center; gap:2rem; margin-top:28px; }
-.contact-submit-btn{ background:var(--orange); color:var(--text); font-family:'Unbounded',sans-serif; font-size:.72rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; border:none; padding:.9rem 2.4rem; border-radius:2px; cursor:pointer; transition:opacity .2s; }
-.contact-submit-btn:hover{ opacity:.85; }
-.contact-inquiries{ display:flex; flex-direction:column; gap:.2rem; }
-.contact-inquiries .ci-label{ font-size:.75rem; color:var(--muted); font-style:italic; }
-.contact-inquiries .ci-tags{ font-size:.78rem; color:var(--muted); }
-.contact-info{ display:flex; flex-direction:column; gap:1.6rem; padding-top:.5rem; }
-.contact-info-item .ci-key{ font-size:.72rem; color:var(--muted); margin-bottom:.2rem; letter-spacing:.04em; }
-.contact-info-item .ci-val{ font-size:.92rem; color:var(--text); line-height:1.4; }
-.contact-footer{ margin-top:56px; border-top:1px solid rgba(255,255,255,.08); padding:18px 0; display:flex; justify-content:center; }
-.contact-footer p{ font-size:.72rem; color:var(--muted); letter-spacing:.04em; }
-.contact-heading-row,.contact-body{ opacity:0; transform:translateY(30px); transition:opacity .7s ease, transform .7s ease; }
-.contact-heading-row.visible,.contact-body.visible{ opacity:1; transform:translateY(0); }
-.contact-body{ transition-delay:.15s; }
+        .skill-card-item {
+            width: 200px;              
+            height: 200px;
+            background: #120b05;       
+            border: 1px solid rgba(255,255,255,.05);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-@media(max-width:768px){
-    nav{ padding:0 1rem; }
-    .hero-inner{ grid-template-columns:1fr; padding:2rem 1.5rem; }
-    .hero-right{ padding-left:0; margin-top:2rem; }
-    .hello-text{ font-size:3rem; padding-right:0; }
-    .photo-slot{ position:relative; right:0; width:220px; height:300px; margin-top:1rem; }
-    .nav-links{ gap:1rem; }
-    .about{ padding:100px 8%; }
-    .skills{ padding:80px 1.5rem 100px; }
-    .skill-row,.skill-row.even{ grid-template-columns:1fr; gap:1rem; }
-    .skill-row.even .skill-number,.skill-row.even .skill-image,.skill-row.even .skill-text{ order:unset; }
-    .skill-image{ width:100%; height:180px; }
-    .skills-deco{ font-size:6rem; }
-    .gallery{ padding:80px 1.5rem 100px; }
-    .gallery-grid{ grid-template-columns:1fr 1fr; }
-    .gw-these{ grid-column:1; grid-row:1; font-size:2.2rem; }
-    .gw-img1{ grid-column:2; grid-row:1; }
-    .gw-aremy{ grid-column:1 / 3; grid-row:2; padding:1rem 0; }
-    .gw-img2{ display:none; }
-    .gw-img3{ grid-column:1 / 3; grid-row:3; margin-top:0; }
-    .gw-img3 .gallery-item{ width:100%; height:120px; }
-    .gw-works{ grid-column:1 / 3; grid-row:4; padding-left:0; margin-top:1rem; }
-    .gallery-item{ width:130px; height:90px; }
-    .contact{ padding:80px 1.5rem 0; }
-    .contact-body{ grid-template-columns:1fr; gap:2.5rem; }
-    .contact-deco img{ width:110px; }
-}
-</style>
+        .skill-card-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;         
+        }
+
+        .skills-title {
+            font-family: 'Unbounded', sans-serif;
+            font-weight: 700;
+            font-size: 3rem;
+            color: #ffffff;            
+            text-align: center;        
+            line-height: 1.2;
+            width: 100%;               
+        }
+
+        .skills-description {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.2rem;
+            color: var(--muted);
+            text-align: center;        
+            max-width: 650px;          
+            width: 100%;               
+            line-height: 1.6;          
+            margin: 0 auto;            
+        }
+
+       .gallery-description {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.2rem;
+            color: var(--muted);
+            text-align: center;
+            max-width: 650px;          
+            line-height: 1.6;          
+        }
+
+
+        .gallery {
+            min-height: 100vh;
+            background: #120b05;      
+            padding: 120px 10%;
+            display: flex;
+            flex-direction: column;   
+            align-items: center;      
+            justify-content: center; 
+            gap: 40px;                 
+        }
+
+       
+        .gallery-cards-row {
+            display: flex;
+            flex-direction: row;      
+            justify-content: center;
+            align-items: center;
+            gap: 32px;                 
+            width: 100%;
+        }
+
+       
+        .gallery-card-item {
+            width: 300px;              
+            height: 400px;
+            background: var(--dark);   
+            border: 1px solid rgba(255,255,255,.05);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gallery-card-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;         
+        }
+
+        .gallery-title {
+            font-family: 'Unbounded', sans-serif;
+            font-weight: 700;
+            font-size: 3rem;
+            color: #ffffff;           
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .gallery-description {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.2rem;
+            color: var(--muted);
+            text-align: center;
+            max-width: 600px;          
+        }
+
+        .contact {
+            min-height: 80vh;          
+            background: #120b05;       
+            padding: 100px 10%;
+            display: flex;
+            flex-direction: column;   
+            align-items: center;       
+            justify-content: center;   
+            gap: 48px;                
+        }
+
+        .contact-title {
+            font-family: 'Unbounded', sans-serif;
+            font-weight: 700;
+            font-size: 3rem;
+            color: #ffffff;         
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .contact-email {
+            font-family: 'Unbounded', sans-serif;
+            font-weight: 400;
+            font-size: 2rem;
+            color: var(--muted);
+            text-decoration: none;    
+            transition: color 0.3s ease; 
+        }
+
+        .contact-email:hover {
+            color: #ffffff;
+        }
+
+        .contact-socials {
+            display: flex;
+            gap: 32px;                
+            margin-top: 20px;
+        }
+
+        .contact-socials a {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.1rem;
+            color: var(--muted);
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            transition: color 0.3s ease;
+        }
+
+        .contact-socials a:hover {
+            color: #ffffff;
+        }
+    </style>
 </head>
 <body>
 
-<nav>
-    <a href="#" class="nav-brand">
-        <img src="logo.png" alt="Logo">
-    </a>
-    <ul class="nav-links">
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact us</a></li>
-        <li>
-            <div class="nav-menu-icon">
-                <span></span><span></span><span></span>
-            </div>
-        </li>
-    </ul>
-</nav>
+    <nav>
+        <a href="#" class="nav-brand"><img src="logo.png" alt="Logo"></a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 
-<section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-inner">
-        <div class="hero-left">
-            <div class="asterisk">
-                <img src="star.png" alt="Decoration">
-            </div>
-            <!-- hello now anchored to bottom-left, photo anchored to bottom-right -->
-            <div class="hello-text">hello,</div>
-            <div class="photo-slot">
-                <img src="ME.png" alt="Dave">
-            </div>
+    <!-- HOME SECTION (NOW SAFELY CLOSED) -->
+    <section class="home">
+        <div class="home-bg-layer"></div>
+
+        <div class="asterisk">
+            <img src="star.png" alt="Spinning Star">
         </div>
-        <div class="hero-right">
+
+        <div class="hello-text">hello,</div>
+
+        <div class="photo-slot">
+            <img src="ME.png" alt="Dave">
+        </div>
+        
+        <div class="intro-block">
             <h1 class="headline">i'm dave!</h1>
             <p class="subhead">a graphic designer<br>based in Philippines—</p>
             <p class="tagline">creating visuals, concepts, and<br>stories that feel alive.</p>
-            <a href="#about" class="cta-arrow">
-                <div class="cta-line"></div>
-                <div class="cta-arrowhead"></div>
-            </a>
         </div>
-    </div>
-    <div class="hero-divider"></div>
-</section>
+    </section> 
 
-<section class="about" id="about">
-    <div class="about-container">
-        <h2 class="about-title">about me</h2>
-        <div class="about-content">
-            <p>I'm a creative who enjoys blending design, storytelling, and emotion into visual work. Most of my projects are inspired by modern internet culture, indie aesthetics, music, and everyday moments that usually go unnoticed.</p>
-            <p>I like making designs that feel expressive instead of overly perfect—something memorable, human, and honest.</p>
-            <p>Currently exploring graphic design, branding, photography, and creative direction. I'm also exploring other forms of art, mainly theater, which continues to shape the way I create and tell stories.</p>
-            <p>I occasionally draw too—small sketches and ideas that quietly fuel my creative drive.</p>
+    <section class="about" id="about">
+        
+        <div class="about-left">
+            <h2 class="about-title">about<br>me.</h2>
         </div>
-    </div>
-</section>
 
-<section class="skills" id="skills">
-    <div class="skills-deco"><img src="star.png" alt=""></div>
-    <h2 class="skills-heading">these are my top skills</h2>
-    <div class="skill-row">
-        <div class="skill-number">01</div>
-        <div class="skill-image"><span class="skill-image-label">[ placeholder ]</span></div>
-        <div class="skill-text">
-            <div class="skill-name">Graphic Design</div>
-            <p class="skill-desc">Creating visual concepts, layouts, posters, and branding materials that balance emotion, style, and clarity.</p>
+        <div class="about-right">
+            <p>I'm a creative who enjoys blending design, storytelling, and emotion into visual work. I like making designs that feel expressive instead of overly perfect.</p>
+            <p>Currently exploring graphic design, branding, photography, and creative direction. I aim to build concepts that don't just look good, but stick in people's minds.</p>
+            <p>I occasionally draw too—small sketches and ideas that quietly fuel my creative drive. Every project is an open playground to test new visual rules.</p>
         </div>
-    </div>
-    <div class="skill-row even">
-        <div class="skill-number">02</div>
-        <div class="skill-image"><span class="skill-image-label">[ placeholder ]</span></div>
-        <div class="skill-text">
-            <div class="skill-name">Creative Direction</div>
-            <p class="skill-desc">Developing visual identities and ideas that connect storytelling, aesthetics, and atmosphere into one cohesive vision.</p>
-        </div>
-    </div>
-    <div class="skill-row">
-        <div class="skill-number">03</div>
-        <div class="skill-image"><span class="skill-image-label">[ placeholder ]</span></div>
-        <div class="skill-text">
-            <div class="skill-name">Branding &amp; Visual Identity</div>
-            <p class="skill-desc">Exploring logos, typography, color systems, and visual language that give projects their own personality.</p>
-        </div>
-    </div>
-</section>
 
-<section class="gallery" id="gallery">
-    <div class="gallery-deco-tl"><img src="star.png" alt=""></div>
-    <div class="gallery-deco-br"><img src="star.png" alt=""></div>
-    <div class="gallery-grid">
-        <div class="gw-these">
-            <span>these</span>
-            <div class="arrow-row">
-                <div class="gw-arrow-h">
-                    <div class="gw-line-h"></div>
-                    <div class="gw-arrowhead-r"></div>
-                </div>
-            </div>
+        <div class="about-star">
+            <img src="star 2.png" alt="Spinning Star 2">
         </div>
-        <div class="gw-img1"><div class="gallery-item"><span class="gallery-item-label">[ placeholder ]</span></div></div>
-        <div class="gw-aremy">
-            <span>are my</span>
-            <span class="gw-bracket">[top]</span>
-            <div class="gw-arrow-down">
-                <div class="gw-line-v"></div>
-                <div class="gw-arrowhead-d"></div>
+
+    </section>
+
+   <!-- 3. THE MY SKILLS SECTION -->
+    <section class="skills" id="skills">
+
+        <!-- ROW OF CONTAINER BLOCKS MAPED TO NEW IMAGE TITLES -->
+        <div class="skills-cards-row">
+            
+            <!-- Box 1: Typography Image Search -->
+            <div class="skill-card-item">
+                <img src="typography.png" alt="Typography and Layout Systems">
             </div>
+
+            <!-- Box 2: Branding Identity Image Search -->
+            <div class="skill-card-item">
+                <img src="branding.png" alt="Brand Identity Design">
+            </div>
+
+            <!-- Box 3: Creative Direction Image Search -->
+            <div class="skill-card-item">
+                <img src="creative-direction.png" alt="Creative Direction and Visual Concepts">
+            </div>
+
         </div>
-        <div class="gw-img2"><div class="gallery-item"><span class="gallery-item-label">[ placeholder ]</span></div></div>
-        <div class="gw-img3"><div class="gallery-item" style="width:100%; height:130px;"><span class="gallery-item-label">[ placeholder ]</span></div></div>
-        <div class="gw-works">
-            <span class="gw-works-word">works</span>
-            <a href="#" class="gallery-btn">view all</a>
+
+        <!-- LABELS AND CAPTIONS UNDERNEATH -->
+        <h2 class="skills-title">these are my top skills</h2>
+        
+        <p class="skills-description">
+            The foundational pillars behind my creative process. Rather than just using tools, I focus on the mastery of visual hierarchy, deliberate spatial composition, and storytelling—ensuring every graphic choice serves a clear, functional purpose.
+        </p>
+
+    </section>
+
+    <section class="gallery" id="gallery">
+
+        <div class="gallery-cards-row">
+            
+            <div class="gallery-card-item">
+                <img src="work1.png" alt="Gallery Project One Placeholder">
+            </div>
+
+            <div class="gallery-card-item">
+                <img src="work2.png" alt="Gallery Project Two Placeholder">
+            </div>
+
+            <div class="gallery-card-item">
+                <img src="work3.png" alt="Gallery Project Three Placeholder">
+            </div>
+
         </div>
-    </div>
-</section>
 
-<section class="contact" id="contact">
-    <div class="contact-deco"><img src="star.png" alt=""></div>
-    <div class="contact-heading-row">
-        <h2 class="contact-title">contact us</h2>
-        <span class="contact-star">✳</span>
-    </div>
-    <div class="contact-body">
-        <form class="contact-form" onsubmit="return false;">
-            <div class="contact-field">
-                <label>your name</label>
-                <input type="text" placeholder="your name">
-            </div>
-            <div class="contact-field">
-                <label>your email</label>
-                <input type="email" placeholder="your email">
-            </div>
-            <div class="contact-field">
-                <label>tell me something...</label>
-                <input type="text" placeholder="tell me something...">
-            </div>
-            <div class="contact-field">
-                <label>leave a message...</label>
-                <textarea placeholder="leave a message..."></textarea>
-            </div>
-            <div class="contact-submit-row">
-                <button class="contact-submit-btn" type="submit">submit</button>
-                <div class="contact-inquiries">
-                    <span class="ci-label">creative inquiries</span>
-                    <span class="ci-tags">branding / posters / visual direction</span>
-                </div>
-            </div>
-        </form>
-        <div class="contact-info">
-            <div class="contact-info-item">
-                <p class="ci-key">email</p>
-                <p class="ci-val">hello@zfelino.com</p>
-            </div>
-            <div class="contact-info-item">
-                <p class="ci-key">phone</p>
-                <p class="ci-val">+63 912 345 6789</p>
-            </div>
-            <div class="contact-info-item">
-                <p class="ci-key">instagram</p>
-                <p class="ci-val">@zfelino</p>
-            </div>
+        <h2 class="gallery-title">selected creative works</h2>
+        
+        <p class="gallery-description">
+            Visual identities built on deep concepts, not passing trends. This collection explores how typography, spatial balance, and sharp color choices combine to give a brand its unique voice. No unnecessary noise—just design that states its purpose cleanly and sticks in people's minds.
+        </p>
+
+    </section>
+
+    <section class="contact" id="contact">
+
+        <h2 class="contact-title">let's create something together.</h2>
+
+        <a href="mailto:your-email@domain.com" class="contact-email">hello@zfelino.com</a>
+
+        <div class="contact-socials">
+            <a href="#" target="_blank">X</a>
+            <a href="#" target="_blank">Instagram</a>
+            <a href="#" target="_blank">LinkedIn</a>
         </div>
-    </div>
-    <div class="contact-footer">
-        <p>zfelino.com © 2026 — all rights reserved</p>
-    </div>
-</section>
 
-<script>
-const rows = document.querySelectorAll('.skill-row');
-const skillObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-        if(entry.isIntersecting){
-            setTimeout(() => { entry.target.classList.add('visible'); }, i * 120);
-            skillObserver.unobserve(entry.target);
-        }
-    });
-}, { threshold: 0.15 });
-rows.forEach(row => skillObserver.observe(row));
-
-const galleryGrid = document.querySelector('.gallery-grid');
-const galleryObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if(entry.isIntersecting){ entry.target.classList.add('visible'); galleryObserver.unobserve(entry.target); }
-    });
-}, { threshold: 0.15 });
-if(galleryGrid) galleryObserver.observe(galleryGrid);
-
-const contactEls = document.querySelectorAll('.contact-heading-row, .contact-body');
-const contactObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if(entry.isIntersecting){ entry.target.classList.add('visible'); contactObserver.unobserve(entry.target); }
-    });
-}, { threshold: 0.1 });
-contactEls.forEach(el => contactObserver.observe(el));
-</script>
+    </section>
+    
 </body>
 </html>
